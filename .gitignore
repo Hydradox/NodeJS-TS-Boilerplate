@@ -132,3 +132,6 @@ dist
 # Secrets
 .env
 .env.*
+
+# Stats
+stats.html
