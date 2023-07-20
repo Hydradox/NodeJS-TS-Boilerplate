@@ -1,6 +1,7 @@
-import { helloWorld } from '@/config/config'
-import { exec } from 'child_process';
+import { helloWorld } from '@/config'
+import { join } from 'path';
 
-console.log(helloWorld)
-exec("pause");
-console.log('Hello Worlddsadasdas!')
+(async () => {
+  console.log(helloWorld)
+  console.log(join(process.cwd(), 'index.ts'))
+})();

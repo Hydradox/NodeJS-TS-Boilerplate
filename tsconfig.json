@@ -1,5 +1,10 @@
 {
   "compilerOptions": {
+    "target": "es5",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+
     "sourceMap": true,
     "allowJs": true,
     "strict": true,
