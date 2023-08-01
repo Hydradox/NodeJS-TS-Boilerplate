@@ -3,7 +3,9 @@ import terser from '@rollup/plugin-terser';
 import progress from 'rollup-plugin-progress';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import filesize from 'rollup-plugin-filesize';
-import command from 'rollup-plugin-command';
+import run from '@rollup/plugin-run';
+import commonjs from '@rollup/plugin-commonjs';
+import dotenv from "rollup-plugin-dotenv"
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -13,14 +15,16 @@ export default {
   output:{
     dir: 'dist',
     format: 'esm',
-    plugins: [terser()],
     sourcemap: true
   },
 
   plugins: [
+    terser(),
     typescript({ tsconfig: './tsconfig.json' }),
     nodeResolve(),
-    command('npm run start').
+    commonjs(),
+    dotenv(),
+    !production && run(),
     production && progress(),
     production && filesize(),
   ]
